@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic HTML Page</title>
+    <title>HTML with JavaScript and Images</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,6 +21,15 @@
             padding: 20px;
             text-align: center;
         }
+        img {
+            margin: 10px;
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
         footer {
             background-color: #333;
             color: #fff;
@@ -31,15 +40,33 @@
             width: 100%;
         }
     </style>
+    <script>
+        // Function to display a message when an image is clicked
+        function showMessage(actor) {
+            alert("You clicked on " + actor);
+        }
+        
+        // Function to reset the page
+        function resetPage() {
+            document.getElementById('main-content').innerHTML = `
+                <p>This is a simple HTML structure with a header, main content area, and footer.</p>
+            `;
+        }
+    </script>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to My Basic HTML Page</h1>
+    <h1>Welcome to My Basic HTML Page with JavaScript</h1>
+    <button onclick="resetPage()">Reset Content</button>
 </header>
 
-<main>
-    <p>This is a simple HTML structure with a header, main content area, and footer.</p>
+<main id="main-content">
+    <p>This is a simple HTML structure with a header, main content area, and footer. Below are a few images of actors.</p>
+    
+    <img src="https://via.placeholder.com/200x300?text=Actor+1" alt="Actor 1" onclick="showMessage('Actor 1')">
+    <img src="https://via.placeholder.com/200x300?text=Actor+2" alt="Actor 2" onclick="showMessage('Actor 2')">
+    <img src="https://via.placeholder.com/200x300?text=Actor+3" alt="Actor 3" onclick="showMessage('Actor 3')">
 </main>
 
 <footer>
