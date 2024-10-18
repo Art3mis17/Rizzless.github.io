@@ -63,6 +63,20 @@
             color: #fff;
             font-size: 14px;
         }
+        #fullscreenBtn {
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #fullscreenBtn:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -71,7 +85,7 @@
     <h1 style="text-align:center; margin-top: 10px;">My PPT Presentation</h1>
 </header>
 
-<div class="container">
+<div class="container" id="presentationContainer">
     <div class="slideshow">
         <img class="slides active" src="slides/1.jpg" alt="Slide 1">
         <img class="slides" src="slides/2.jpg" alt="Slide 2">
@@ -92,8 +106,10 @@
     </div>
 </div>
 
+<button id="fullscreenBtn" onclick="toggleFullscreen()">Go Full Screen</button>
+
 <footer>
-    <p>&copy; 2024 My GitHub PPT Presentation</p>
+    <p>Made by B A Saran, Jabin Joshua, Madhavv Arul | IoT-A</p>
 </footer>
 
 <script>
@@ -117,6 +133,26 @@
     function prevSlide() {
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
+    }
+
+    // Fullscreen functionality
+    function toggleFullscreen() {
+        const elem = document.getElementById('presentationContainer');
+        if (!document.fullscreenElement) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
     }
 </script>
 
